@@ -1,0 +1,434 @@
+<!--logs.wxml 首页-->
+
+<!--图片轮播 组件尽量使用原生效率好一些  -->
+<!--图片轮播  -->
+  <!-- <view class="slider">
+  <swiper autoplay interval='3500' indicator-dots >
+      <swiper-item wx:for="{{imglist}}" wx:key="id">
+          <image src='{{item.img_url}}' mode="aspectFill" width="375" height="150"></image>
+      </swiper-item>     
+  </swiper>
+  <!--搜索栏  -->
+
+ <view  class="header">
+    <image src="/assets/index/default_shop.png" mode="aspectFill" width="375" height="50"></image>
+    <input placeholder='在店铺 博库体验店 中搜索'></input>   
+    <image src="/assets/index/search.png" class="search"></image>     
+ </view>
+ <!--头部导航  -->
+
+<view class="navbar">
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+</view>
+ 
+<!--轮播图-->
+<view hidden="{{currentTab!==0}}">
+    <view class="slider">
+  <swiper autoplay interval='3500' indicator-dots> 
+   <swiper-item wx:for="{{imglist}}" wx:key="id" wx:if="{{item.position!=2}}">
+          <image src='{{item.img_url}}'  mode="aspectFill" width="375" height="150"></image>
+      </swiper-item> 
+  </swiper>
+</view>
+<!-- 分类 -->
+<view class="classify d-flex">
+  <navigator class="classify-item d-flex-item" wx:for="{{prolist}}" wx:key="id" wx:if="{{item.position=='nav'}}" >
+      <image src="{{item.img_url}}"></image>
+      <text>{{item.pro_name}}</text>
+  </navigator>
+  <!-- <navigator class="classify-item d-flex-item">
+      <image src="/assets/index/g2.jpg"></image>
+      <text>畅销榜</text>
+  </navigator>
+  <navigator class="classify-item d-flex-item">
+      <image src="/assets/index/g3.jpg"></image>
+      <text>新书</text>
+  </navigator>
+  <navigator class="classify-item d-flex-item">
+      <image src="/assets/index/g4.jpg"></image>
+      <text>分类</text>
+  </navigator>
+  <navigator class="classify-item d-flex-item">
+      <image src="/assets/index/g5.jpg"></image>
+      <text>开店</text>
+  </navigator> -->
+</view>
+<!-- 快报区域 -->
+<view class="d-flex news">
+    <view class="myfont d-flex fast">
+        快报
+    </view>
+    <view class="d-flex-item slider">
+        <swiper autoplay interval='3500' vertical='true'>
+            <swiper-item>
+                 <navigator class="myfont">十万童书,抢先预览</navigator>
+            </swiper-item>
+             <swiper-item>
+                 <navigator class="myfont">新书快递,抢先预览</navigator>
+            </swiper-item>
+        </swiper>       
+    </view>
+</view>
+<!-- 限时抢购 -->
+<navigator class="timeout">
+  <image src="/assets/index/buy.png"></image>
+  <text class="eight">08:00开场</text>
+  <text  class="arrow">更多</text>
+</navigator>
+<!-- 商品轮播 -->
+<view class="slider pro_list d-flex">
+    <swiper>
+        <swiper-item class="d-flex">
+       
+          <view class="d-flex-item" wx:for="{{prolist}}" wx:key="id" wx:if="{{item.position=='fsw'}}">
+              <image src="{{item.img_url}}" class="pro_size"  catchtap='showDetails' data-did="{{item.did}}"></image>             
+              <text class="ell">{{item.pro_name}}</text>
+              <view class="price">
+                  <text>¥{{item.pro_saleprice}}|</text>
+                  <text>¥{{item.pro_price}}</text>
+              </view>   
+          </view>
+       
+          <!-- <view class="d-flex-item">
+              <image src="/assets/index/p2.jpg"  class="pro_size"></image>             
+              <text class="ell">原来这就是二十四</text>
+              <view class="price">
+                  <text>25.00|</text>
+                  <text>26.99</text>
+              </view>   
+          </view>
+          <view class="d-flex-item">
+              <image src="/assets/index/p3.jpg"  class="pro_size"></image>             
+              <text class="ell">十万个为什么</text>
+              <view class="price">
+                  <text>25.00|</text>
+                  <text>26.99</text>
+              </view>   
+          </view>
+          <view class="d-flex-item">
+              <image src="/assets/index/p5.jpg" class="pro_size"></image>             
+              <text class="ell">原来这就是二十四</text>
+              <view class="price">
+                  <text>25.00|</text>
+                  <text>26.99</text>
+              </view>   
+          </view> -->
+          </swiper-item>
+          <swiper-item class="d-flex">
+          <view class="d-flex-item" wx:for="{{prolist}}" wx:key="id" wx:if="{{item.position=='ssw'}}">
+              <image src="{{item.img_url}}"  class="pro_size"  catchtap='showDetails' data-did="{{item.did}}"></image>             
+              <text class="ell">{{item.pro_name}}</text>
+              <view class="price">
+                  <text>{{item.pro_saleprice}}|</text>
+                  <text>{{item.pro_price}}</text>
+              </view>   
+          </view>
+          <!-- <view class="d-flex-item">
+              <image src="/assets/index/p5.jpg" class="pro_size"></image>             
+              <text class="ell">原来这就是二十四</text>
+              <view class="price">
+                  <text>25.00|</text>
+                  <text>26.99</text>
+              </view>   
+          </view>
+          <view class="d-flex-item">
+              <image src="/assets/index/p6.jpg" class="pro_size"></image>             
+              <text class="ell">原来这就是二十四</text>
+              <view class="price">
+                  <text>25.00|</text>
+                  <text>26.99</text>
+              </view>   
+          </view>
+          <view class="d-flex-item">
+              <image src="/assets/index/p5.jpg" class="pro_size"></image>             
+              <text class="ell">原来这就是二十四</text>
+              <view class="price">        
+                  <text>25.00|</text>
+                  <text>26.99</text>
+              </view>   
+          </view> -->
+        </swiper-item>  
+    </swiper>
+</view>
+<!-- 补丁 -->
+<view class="divider">
+</view>
+<!-- 图片布局 -->
+<view class="d-flex pic_left">
+    <navigator>
+    <image src="{{prolist[35].img_url}}"></image>
+    </navigator>
+    <view class="d-flex-item pic_right"> 
+      <navigator>
+         <image src="{{prolist[38].img_url}}" ></image>
+      </navigator>
+      <navigator>
+         <image src="{{prolist[37].img_url}}"></image>
+      </navigator>
+    </view>
+</view>
+<view class="d-flex pic_three">
+  <navigator wx:for="{{prolist}}" wx:key="id" wx:if="{{item.position=='pic'}}">
+    <image src="{{item.img_url}}"></image>
+  </navigator>
+  <!-- <navigator>
+    <image src="/assets/index/everyday.jpg"></image>
+  </navigator>
+  <navigator>
+    <image src="/assets/index/life5.jpg"></image>
+  </navigator> -->
+</view>
+<!-- 补丁 -->
+<view class="divider">
+</view> 
+<view class="pic_one">
+  <image src="/assets/index/j4.jpg"></image>
+</view>
+<!-- 精选单品 -->
+
+  <view class="pros">
+   <view class="pro-item d-flex" wx:for="{{prolist}}" wx:key="id" wx:if="{{item.classification=='floor2'}}" >
+      <navigator class="pro-item-pic">
+          <image src="{{item.img_url}}"  catchtap='showDetails' data-did="{{item.did}}"></image>
+      </navigator> 
+      <view class="pro-item-det">
+          <text class="pro-item-name">{{item.pro_name}}</text>
+          <text class="pro-item-titile">{{item.subtitle}}</text>
+          <view class="priceinfo">
+              <text >活动价:</text>
+              <text class="newprice">¥{{item.pro_saleprice}}</text>
+              <text class="oldprice">(定价¥{{item.pro_price}})</text>
+          </view>
+          <navigator class="buynow" catchtap='showDetails' data-did="{{item.did}}">
+              立即抢购
+          </navigator> 
+      </view> 
+    </view>
+  </view>
+   <view class="divider">
+</view> 
+<view class="pic_one">
+  <image src="/assets/index/pic_1.jpg"></image> 
+</view>  
+<image src="/assets/index/pic_2.jpg" class="pic_to"></image> 
+  <view class="pros">
+    <view class="pro-item d-flex">
+      <navigator class="pro-item-pic2" url='../details/details'>
+          <image src='/assets/index/self.jpg' ></image>
+      </navigator> 
+      <view class="pro-item-det">
+          <text class="pro-item-name">自控力.实操篇</text>
+          <text class="pro-item-time">共读时间:2018-10-21-2018-10-30</text>
+          <text>帮你从自知到自控，拿回人生的主导权！</text>
+          <view class="d-flex">
+            <view class="priceinf">
+                <text class="author">作者 美 凯利·麦格尼格尔</text>
+                <text class="mc">主播：橙子</text>
+            </view>
+            <navigator class="order">
+                订阅
+            </navigator>
+          </view> 
+      </view> 
+    </view>
+  </view>
+  <!-- 补丁 -->
+   <view class="divider">
+</view> 
+<view class="pic_one">
+  <image src="/assets/index/p_2.jpg"></image> 
+</view>
+<image src="/assets/index/man.jpg" class="pic_to"></image>
+<!-- 商品 -->
+<view class="slider pro_list d-flex">
+    <swiper>
+        <swiper-item class="d-flex">
+          <view class="d-flex-item" wx:for="{{prolist}}" wx:key="id" wx:if="{{item.position=='fsw1'}}">
+              <image src="{{item.img_url}}" class="pro_size"  catchtap='showDetails' data-did="{{item.did}}"></image>             
+              <text class="ell">{{item.pro_name}}</text>
+              <view class="price">
+                  <text>{{item.pro_saleprice}}|</text>
+                  <text>{{item.pro_price}}</text>
+              </view>   
+          </view>
+    
+          </swiper-item>
+          <swiper-item class="d-flex">
+            <view class="d-flex-item" wx:for="{{prolist}}" wx:key="id" wx:if="{{item.position=='fsw2'}}">
+              <image src="{{item.img_url}}" class="pro_size"  catchtap='showDetails' data-did="{{item.did}}"></image>             
+              <text class="ell">{{item.pro_name}}</text>
+              <view class="price">
+                  <text>{{item.pro_saleprice}}|</text>
+                  <text>{{item.pro_price}}</text>
+              </view>   
+          </view>
+ 
+        </swiper-item>  
+    </swiper>
+</view>
+<!-- buding -->
+  <view class="divider">
+</view> 
+<view class="pic_one">
+  <image src="/assets/index/book.jpg"></image> 
+</view>
+<image src="/assets/index/spring.jpg" class="pic_to"></image> 
+
+<view class="labry">
+          <view class="d-flex-item pro_size1" wx:for="{{prolist}}" wx:key="id" wx:if="{{item.classification=='floor3'}}">
+                <image src="{{item.img_url}}" mode="aspectFill"  catchtap='showDetails' data-did="{{item.did}}"></image>             
+                <text class="ell">{{item.pro_name}}</text>
+                <view class="price">
+                    <text>{{item.pro_saleprice}}|</text>
+                    <text>{{item.pro_price}}</text>
+                </view>   
+        </view>
+
+
+  </view>
+
+<!-- 右下角新人专享图片 -->
+
+  
+</view>
+ 
+<!--搜索-->
+<view hidden="{{currentTab!==1}}">
+ <!-- 文创轮播图 -->
+  <view class="slider">
+        <swiper autoplay interval='3500' indicator-dots> 
+        <swiper-item wx:for="{{prolist}}" wx:key="id" wx:if="{{item.position=='lb1'}}">
+                <image src='{{item.img_url}}' mode="aspectFill" width="375" height="150"></image>
+            </swiper-item> 
+        </swiper>
+  </view>
+
+<!-- 分类 -->
+<view class="classify create d-flex">
+  <navigator class="classify-item d-flex-item" wx:for="{{prolist}}" wx:key="id" wx:if="{{item.position=='nav1'}}" >
+      <image src="{{item.img_url}}" mode="aspectFill"></image>
+  </navigator>
+</view>
+<view class="classify create d-flex"> 
+  <navigator class="classify-item d-flex-item" wx:for="{{prolist}}" wx:key="id" wx:if="{{item.position=='nav2'}}" >
+      <image src="{{item.img_url}}" mode="aspectFill"></image>    
+  </navigator>
+</view>
+<!-- 限时抢购 -->
+  <navigator class="timeout">
+      <image src="/assets/index/buy.png"></image>
+      <text class="eight">08:00开场</text>
+      <text  class="arrow">更多</text>
+  </navigator>
+
+<!-- 商品横向轮播 -->
+
+<view class="slider pro_list d-flex">
+    <swiper>
+        <swiper-item class="d-flex">
+       
+          <view class="d-flex-item" wx:for="{{prolist}}" wx:key="id" wx:if="{{item.position=='wf1'}}">
+              <image src="{{item.img_url}}" class="pro_size"  catchtap='showDetails' data-did="{{item.did}}"></image>             
+              <text class="ell">{{item.pro_name}}</text>
+              <view class="price">
+                  <text>{{item.pro_saleprice}}|</text>
+                  <text>{{item.pro_price}}</text>
+              </view>   
+          </view>
+          </swiper-item>
+          <swiper-item class="d-flex">
+          <view class="d-flex-item" wx:for="{{prolist}}" wx:key="id" wx:if="{{item.position=='wf11'}}">
+              <image src="{{item.img_url}}"  class="pro_size"  catchtap='showDetails' data-did="{{item.did}}"></image>             
+              <text class="ell">{{item.pro_name}}</text>
+              <view class="price">
+                  <text>{{item.pro_saleprice}}|</text>
+                  <text>{{item.pro_price}}</text>
+              </view>   
+          </view>
+                  
+        </swiper-item>  
+    </swiper>
+</view>
+
+<!-- 团购区域 -->
+
+<image src="{{item.img_url}}" wx:for="{{prolist}}" wx:key ="id" wx:if="{{item.position=='top'}}" class="pic_one"></image>
+
+</view>
+ 
+<!--我-->
+<view hidden="{{currentTab!==2}}">
+
+<view class="slider">
+        <swiper autoplay interval='3500' indicator-dots> 
+        <swiper-item wx:for="{{imglist}}" wx:key="id" wx:if="{{item.position=='2'}}">
+                <image src='{{item.img_url}}' mode="aspectFill" width="375" height="150"></image>
+            </swiper-item> 
+        </swiper>
+  </view>
+
+<!-- 分类 -->
+<view class="classify d-flex">
+  <navigator class="classify-item d-flex-item" wx:for="{{prolist}}" wx:key="id" wx:if="{{item.position=='nav3'}}" >
+      <image src="{{item.img_url}}"></image>
+       <text>{{item.pro_name}}</text>
+  </navigator>
+</view>
+
+<!-- 图片 -->
+  <image src="{{item.img_url}}" wx:for="{{prolist}}" wx:if="{{item.position=='wf3_1'}}" wx:key="id"  catchtap='showDetails' data-did="{{item.did}}" ></image>
+  <view class="d-flex life_pic">
+      <image src="{{item.img_url}}" mode="aspectFill" wx:for="{{prolist}}" wx:if="{{item.position=='wf3_2'}}" wx:key="id"  catchtap='showDetails' data-did="{{item.did}}" ></image>
+      
+  </view>
+ <view class="d-flex life_pic">
+      <image src="{{item.img_url}}" mode="aspectFill" wx:for="{{prolist}}" wx:if="{{item.position=='wf3_3'}}" wx:key="id"  catchtap='showDetails' data-did="{{item.did}}" ></image>
+      
+  </view>
+
+
+</view>
+
+
+<!-- 新上架 -->
+<view hidden="{{currentTab!==3}}">
+  <view class="pros">
+   <view class="pro-item d-flex" wx:for="{{newlist}}" wx:key="id">
+      <navigator class="pro-item-pic">
+          <image src="{{item.img_url}}"  catchtap='showDetails' data-did="{{item.did}}"></image>
+      </navigator> 
+      <view class="pro-item-det">
+          <text class="pro-item-name">{{item.pro_name}}</text>
+        
+          <view class="priceinfo">
+              <text >活动价:</text>
+              <text class="newprice">¥{{item.pro_saleprice}}</text>
+              <text class="oldprice">(定价¥{{item.pro_price}})</text>
+          </view>
+          <navigator class="buynow" catchtap='showDetails' data-did="{{item.did}}">
+              立即抢购
+          </navigator> 
+      </view> 
+    </view>
+  </view>
+<view class="loadmore loading" wx:if="{{hasMore}}" >
+  正在加载....
+</view>
+<view wx:else="{{hasMore}}" class="tip">
+ O(∩_∩)O~~亲,没有更多了哦~
+</view>
+
+  
+</view>
+
+
+<view class="new_pic" wx:if="{{hasShow}}">
+      <image src="/assets/index/close.png" class="smallpic" bindtap='close'></image>
+      <image src="/assets/index/newsButton.png" class="big_pic"></image>
+</view>
+
+
+
+
+
+

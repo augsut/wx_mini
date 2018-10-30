@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/logs/logs",
+    "pages/shopcar/shopcar",   
+    "pages/details/details",
+    "pages/profile/profile",
+    "pages/index/index",
+    "pages/home/home",
+    "pages/register/register"
+   
+  ],
+  "window": {
+    "backgroundTextStyle": "#FEFEFE",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "博库书城",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#FEFEFE",
+    "list": [
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "主页",
+        "iconPath": "assets/home.png",
+        "selectedIconPath": "assets/home-active.png"
+      },
+      {
+        "pagePath": "pages/shopcar/shopcar",
+        "text": "购物车",
+        "iconPath": "assets/shoping.png",
+        "selectedIconPath": "assets/shoping-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的博库",
+        "iconPath": "assets/mine.png",
+        "selectedIconPath": "assets/mine-active.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+<!--pages/profile/profile.wxml-->
+<!-- <text>pages/profile/profile.wxml</text> -->
+<view class="avatar">
+    <image src='/assets/avatar.png'></image>
+    <view class="login">
+      <navigator>登录/</navigator>
+      <navigator url="../register/register">注册</navigator>
+    </view>
+    <view class="head_bottom">
+  <view class="bottom-item">
+    <text>0</text>
+    <navigator>余额</navigator>
+  </view>
+  <view class="bottom-item">
+    <text>5</text>
+    <navigator>优惠券</navigator>
+  </view>
+  <view class="bottom-item">
+    <text>0</text>
+    <navigator>地址</navigator>
+  </view>
+</view>
+</view>
+<!--灰色分割块  -->
+<view class="divider">
+</view>
+<view class="card">
+  <view class="card-title">
+    <view class="title-left"></view><navigator>我的订单</navigator><navigator class="arrow">全部订单</navigator>
+  </view>
+  <view class="card-item" >
+    <view>
+      <image src="/assets/money.png" width="60" height="50"></image>
+      <navigator>待付款</navigator>
+    </view>
+    <view>
+      <image src="/assets/wait.png"></image>
+        <navigator>待发货</navigator>
+    </view>
+    <view>
+      <image src="/assets/waitduct .png"></image>
+        <navigator>待收货</navigator>
+    </view>
+    <view>
+      <image src="/assets/suss.png"></image>
+        <navigator>已收货</navigator>
+    </view>
+  </view>
+  <view class="card-query"> 
+    <navigator class="arrow">团购订单查询</navigator>
+  </view>
+</view>
+<button>切换账号</button>
+

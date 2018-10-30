@@ -1,0 +1,172 @@
+<!--导航条-->
+ <view class="navbar">
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+</view> 
+ 
+<!--商品-->
+<view hidden="{{currentTab!==0}}">
+  <view class="slider">
+  <image src="/assets/details/sale.png" class="sale_pic"></image>
+    <swiper autoplay indicator-dots>
+        <swiper-item>
+            <image src="{{prointr[0].img_url}}" mode="widthFix"></image>
+        </swiper-item>
+        <swiper-item>
+            <image src="{{prointr[0].img_url}}"  mode="aspectFill"></image>
+        </swiper-item>
+    </swiper>
+  </view>
+
+ <view class="divider">
+ </view>
+ <view class="lan_intr">
+    <text class="lan_title">{{prointr[0].pro_name}}</text>
+    <text class="lan-subtitle" wx:if="{{prointr[0].subtitle!==null}}">{{prointr[0].subtitle}}</text>
+    <view class="price">
+        <text class="newprice">¥{{prointr[0].pro_saleprice}}</text> <text class="oldprice">(定价¥{{prointr[0].pro_price}})</text>
+    </view>
+    <view class="d-flex lan_btn">
+        <view class="free_email"> 
+        包邮
+        </view>
+        <view>
+        销量:1453
+        </view>
+        <view>
+          库存:40件
+        </view>
+    </view>
+</view>
+
+ <view class="divider">
+ 
+ </view>
+ <view class="footer d-flex">
+      <view class="d-flex all_btn">
+        <view class="server d-flex-item">
+          <image src="/assets/details/people.png"></image>
+          <text>客服</text>
+        </view>
+        <view class="server d-flex-item">
+          <image src="/assets/details/start.png"></image>
+          <text>收藏</text>
+        </view>
+        <view class="server d-flex-item">
+          <image src="/assets/details/shop.png" bindtap='gocar'></image>
+          <text>购物车</text>
+        </view>
+      </view>
+      <button class="shoping-car" bindtap='add' form-type='submit'>  
+          加入购物车
+      </button>
+      <view class="go-buy">
+        立即购买
+      </view>
+</view>
+<view class="boku_tel arrow">
+    <image src="/assets/details/default_shop.png" class="pic_icon"></image>
+    <view class="boku_num">
+      <text >博库体验店</text>
+      <text class="expr">客服热线:0571-86306883</text>
+    </view>
+</view>
+ <view class="divider">
+ 
+ </view>
+ <view class="sale d-flex arrow">
+    <view class="sale_1">
+        优惠券
+    </view>
+    <text class="yours">您有3张优惠券</text>
+ </view>
+  <view class="divider"></view>
+  <view class="sale d-flex arrow">
+    <text class="yours">ISBN</text>
+    <text class="yours">9787514552786</text>
+ </view>
+   <view class="sale d-flex arrow">
+    <text class="yours">作者</text>
+    <text class="yours">胖乐胖乐</text>
+ </view>
+   <view class="sale d-flex arrow">
+    <text class="yours">出版</text>
+    <text class="yours">中国致公</text>
+ </view>
+<view class="divider"></view>
+ <view class="sale d-flex sale_bottom">
+    <view class="d-flex">
+        <image src="/assets/details/gou.png" class="gou"></image>
+        <text>正品保证</text>
+    </view>
+    <view class="d-flex">
+        <image src="/assets/details/gou.png"  class="gou"></image>
+        <text>赠送积分</text>
+    </view>
+    <view class="d-flex">
+        <image src="/assets/details/gou.png"  class="gou"></image>
+        <text>满59元包邮</text>
+    </view>
+    <view class="d-flex">
+        <image src="/assets/details/gou.png"  class="gou"></image>
+        <text>7天无理由退款</text>
+    </view>
+ </view>
+
+</view>
+<!--详情-->
+<view hidden="{{currentTab!==1}}">
+ <view>
+ <view class="sale">
+    <text class="yours">ISBN</text>
+    <text class="yours">9787514552786</text>
+ </view>
+   <view class="sale">
+    <text class="yours">作者</text>
+    <text class="yours">胖乐胖乐</text>
+ </view>
+   <view class="sale">
+    <text class="yours">出版</text>
+    <text class="yours">中国致公</text>
+ </view>
+ <view class="sale">
+    <text class="yours">页数</text>
+    <text class="yours">850</text>
+ </view>
+ <view class="sale">
+    <text class="yours">出版日期</text>
+    <text class="yours">2018-09-01</text>
+ </view>
+ <view class="sale">
+    <text class="yours">印刷日期</text>
+    <text class="yours">2018-09-01</text>
+ </view>
+ <view class="sale">
+    <text class="yours">包装</text>
+    <text class="yours">平装</text>
+ </view>
+ <view class="sale">
+    <text class="yours">开本</text>
+    <text class="yours">32开</text>
+ </view>
+ <image src="/assets/details/details.jpg" mode="aspectFill" class="pic_det"></image>
+ <view>
+      
+ </view>
+ 
+ </view>
+</view>
+ 
+<!--评价-->
+<view hidden="{{currentTab!==2}}">
+    <view class="comment">
+        <text class="coment_star">♥♥♥♥♥</text>
+        <text class="coment_lan">还不错哦</text>
+        <view class="">
+        <image src="/assets/details/avatar.png" class="avatar"></image>
+        <text class='coment_lan'>139*******152</text>
+        </view>
+        
+   </view>
+</view>
+
+

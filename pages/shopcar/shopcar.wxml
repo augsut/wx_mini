@@ -1,0 +1,52 @@
+<!--pages/shopcar/shopcar.wxml-->
+<!-- <text>pages/shopcar/shopcar.wxml</text> -->
+<view class="divider">
+</view>
+ <checkbox>
+     <checkbox-group>
+        <view class="d-flex car_head">
+        <text class="mysale">  自营 </text>
+        <text>运费:0.00</text>            
+        </view>
+      </checkbox-group>    
+ </checkbox>
+ <view class="divider">
+ </view>
+<checkbox>
+<view class="d-flex check-item" >
+    <view >
+              <image src="{{carts.img_url}}" class="pro_pic"></image>
+    </view>
+    <view class="check-price" wx:key="id">
+        <text class="pro_name">{{carts.pro_name}}</text>
+        <view class="d-flex">
+            <text class="pro_saleprice">
+                ¥{{carts.pro_price}}
+            </text>
+            <view class="cell-item">  
+    <view class="tui-number-group">
+         <button class="tui-number-cell" catchtap='del'>-</button>
+        <input type="number" value="{{num}}"></input>
+        <button class="tui-number-cell" catchtap='addplus'>+</button>
+    </view>
+   
+  </view>
+        </view>
+   
+    
+ </view>
+
+    </view>
+
+</checkbox>
+<checkbox class="sum_but">
+<view class="d-flex car_bottom">
+      全选
+    <view class="sum d-flex">
+        <text>合计: </text><text class="sumprice"> ¥{{total}}</text>
+    </view>
+   <view class="count" catchtap='gobuy'>
+    结算
+   </view>
+</view>
+</checkbox>
